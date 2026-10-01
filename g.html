@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>منصة الاختبارات | بناء الدولة المصرية</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050914;
+    --card:rgba(15,25,43,.78);
+    --card2:#101b30;
+    --primary:#5b8cff;
+    --secondary:#7c4dff;
+    --cyan:#22d3ee;
+    --green:#22c55e;
+    --red:#ef4444;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:rgba(255,255,255,.09);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:"Cairo",sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 10% 10%,rgba(91,140,255,.18),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(124,77,255,.18),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(34,211,238,.08),transparent 30%),
+        var(--bg);
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.25;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:40px 40px;
+}
+
+/* HEADER */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    background:rgba(5,9,20,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:20px;
+    font-weight:900;
+}
+
+.brand-icon{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    box-shadow:0 0 25px rgba(91,140,255,.35);
+}
+
+.header-badge{
+    padding:7px 15px;
+    border:1px solid var(--border);
+    border-radius:30px;
+    color:#cbd5e1;
+    font-size:13px;
+    background:rgba(255,255,255,.04);
+}
+
+/* MAIN */
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:45px 0 70px;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    margin-bottom:30px;
+    animation:fadeUp .7s ease;
+}
+
+.hero-icon{
+    width:85px;
+    height:85px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    border-radius:27px;
+    background:linear-gradient(135deg,rgba(91,140,255,.25),rgba(124,77,255,.25));
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:
+        0 0 50px rgba(91,140,255,.12),
+        inset 0 0 30px rgba(255,255,255,.04);
+}
+
+.hero h1{
+    font-size:clamp(28px,5vw,50px);
+    margin-top:22px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#7aa2ff,#b17cff,#43dff5);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    margin-top:10px;
+    color:var(--muted);
+    font-size:16px;
+}
+
+/* GLASS CARD */
+
+.glass{
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-radius:28px;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.32),
+        inset 0 1px rgba(255,255,255,.04);
+}
+
+/* START */
+
+.start-card{
+    max-width:850px;
+    margin:auto;
+    padding:42px;
+    animation:fadeUp .8s ease;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin:25px 0;
+}
+
+.info{
+    padding:20px 12px;
+    text-align:center;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+    border-radius:18px;
+}
+
+.info-icon{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.info strong{
+    display:block;
+    font-size:20px;
+}
+
+.info span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.label{
+    display:block;
+    margin-bottom:9px;
+    font-size:14px;
+    color:#cbd5e1;
+    font-weight:700;
+}
+
+.name-input{
+    width:100%;
+    height:58px;
+    padding:0 18px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    outline:none;
+    color:white;
+    background:rgba(0,0,0,.2);
+    font-family:inherit;
+    font-size:16px;
+    transition:.3s;
+}
+
+.name-input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(91,140,255,.12);
+}
+
+.btn{
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
+    font-weight:800;
+    border-radius:15px;
+    min-height:55px;
+    padding:0 25px;
+    transition:.25s;
+}
+
+.btn-primary{
+    color:white;
+    width:100%;
+    margin-top:15px;
+    background:linear-gradient(135deg,#4f7cff,#814dff);
+    box-shadow:0 10px 30px rgba(91,140,255,.22);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 35px rgba(91,140,255,.35);
+}
+
+.note{
+    text-align:center;
+    margin-top:15px;
+    color:#64748b;
+    font-size:12px;
+}
+
+/* QUIZ */
+
+.quiz{
+    display:none;
+}
+
+.quiz-top{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.progress-wrap{
+    flex:1;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    color:#aebbd0;
+    font-size:13px;
+}
+
+.progress{
+    height:8px;
+    overflow:hidden;
+    background:#172238;
+    border-radius:30px;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,var(--primary),var(--secondary),var(--cyan));
+    border-radius:30px;
+    transition:.4s;
+}
+
+.timer{
+    min-width:100px;
+    text-align:center;
+    padding:10px 15px;
+    border-radius:14px;
+    background:rgba(255,255,255,.045);
+    border:1px solid var(--border);
+    font-weight:800;
+}
+
+.question-card{
+    padding:35px;
+}
+
+.question-label{
+    display:inline-flex;
+    padding:7px 13px;
+    border-radius:30px;
+    background:rgba(91,140,255,.1);
+    color:#8fb0ff;
+    border:1px solid rgba(91,140,255,.18);
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.question{
+    font-size:23px;
+    line-height:1.9;
+    font-weight:800;
+    margin-bottom:25px;
+}
+
+.options{
+    display:grid;
+    gap:13px;
+}
+
+.option{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:17px;
+    min-height:62px;
+    border-radius:17px;
+    cursor:pointer;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.025);
+    transition:.25s;
+}
+
+.option:hover{
+    transform:translateX(-3px);
+    border-color:rgba(91,140,255,.45);
+    background:rgba(91,140,255,.06);
+}
+
+.option.selected{
+    border-color:var(--primary);
+    background:rgba(91,140,255,.12);
+    box-shadow:0 0 25px rgba(91,140,255,.08);
+}
+
+.option-letter{
+    width:39px;
+    height:39px;
+    flex-shrink:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:11px;
+    background:#17233a;
+    color:#b8c8df;
+    font-weight:900;
+}
+
+.option.selected .option-letter{
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:white;
+}
+
+.quiz-actions{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:30px;
+}
+
+.action-btn{
+    padding:0 24px;
+    min-height:52px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:#121e32;
+    color:white;
+    font-family:inherit;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.action-btn:hover{
+    background:#1b2a44;
+}
+
+.next-btn{
+    background:linear-gradient(135deg,#4f7cff,#814dff);
+    border:0;
+}
+
+/* RESULT */
+
+.result{
+    display:none;
+}
+
+.result-card{
+    padding:45px;
+    text-align:center;
+}
+
+.result-icon{
+    width:95px;
+    height:95px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:30px;
+    font-size:45px;
+    background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(34,211,238,.12));
+    border:1px solid rgba(34,197,94,.2);
+}
+
+.result h2{
+    font-size:34px;
+    margin-top:20px;
+}
+
+.score{
+    font-size:70px;
+    line-height:1;
+    font-weight:900;
+    margin:25px 0 5px;
+    background:linear-gradient(90deg,#61a3ff,#b57dff,#42e5ed);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.score-sub{
+    color:var(--muted);
+}
+
+.result-message{
+    max-width:650px;
+    margin:20px auto;
+    color:#cbd5e1;
+    line-height:2;
+}
+
+.result-actions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.result-actions button{
+    min-width:180px;
+}
+
+/* REVIEW */
+
+.review{
+    display:none;
+}
+
+.review-card{
+    padding:35px;
+}
+
+.review-title{
+    font-size:26px;
+    font-weight:900;
+    margin-bottom:25px;
+}
+
+.review-item{
+    padding:20px;
+    margin-bottom:14px;
+    border-radius:17px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.025);
+}
+
+.review-item.correct{
+    border-right:4px solid var(--green);
+}
+
+.review-item.wrong{
+    border-right:4px solid var(--red);
+}
+
+.review-question{
+    font-weight:800;
+    line-height:1.8;
+    margin-bottom:10px;
+}
+
+.review-answer{
+    margin-top:7px;
+    font-size:14px;
+}
+
+.right{
+    color:#4ade80;
+}
+
+.wrong-text{
+    color:#fb7185;
+}
+
+/* CERTIFICATE */
+
+.certificate-section{
+    display:none;
+}
+
+.certificate{
+    position:relative;
+    overflow:hidden;
+    max-width:900px;
+    margin:auto;
+    min-height:620px;
+    padding:65px 55px;
+    text-align:center;
+    color:#15243b;
+    background:
+        radial-gradient(circle at top left,rgba(211,173,74,.15),transparent 30%),
+        radial-gradient(circle at bottom right,rgba(211,173,74,.12),transparent 30%),
+        #fffdf7;
+    border:13px double #b89443;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.certificate::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid #d5b86d;
+    pointer-events:none;
+}
+
+.certificate::after{
+    content:"CERTIFICATE";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-20deg);
+    font-size:80px;
+    font-weight:900;
+    color:rgba(184,148,67,.045);
+    white-space:nowrap;
+    pointer-events:none;
+}
+
+.crown{
+    font-size:60px;
+}
+
+.certificate h1{
+    color:#9b7529;
+    font-size:45px;
+    margin:10px 0;
+}
+
+.cert-subtitle{
+    color:#65748b;
+}
+
+.cert-small{
+    margin-top:30px;
+}
+
+.cert-name{
+    display:inline-block;
+    margin:20px 0;
+    padding:0 55px 12px;
+    border-bottom:2px solid #bd9946;
+    color:#174d83;
+    font-size:40px;
+    font-weight:900;
+}
+
+.cert-course{
+    font-size:22px;
+    font-weight:800;
+    color:#253b58;
+}
+
+.cert-score{
+    margin-top:18px;
+    font-size:23px;
+    font-weight:900;
+    color:#21804b;
+}
+
+.cert-date{
+    margin-top:8px;
+    color:#6b7280;
+}
+
+.cert-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:60px;
+    position:relative;
+    z-index:2;
+}
+
+.sign{
+    width:210px;
+    color:#374151;
+}
+
+.sign-line{
+    border-top:1px solid #6b7280;
+    margin-top:35px;
+}
+
+.print-actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:20px;
+}
+
+@media print{
+
+    @page{
+        size:A4 landscape;
+        margin:0;
+    }
+
+    body{
+        background:white;
+    }
+
+    body *{
+        visibility:hidden !important;
+    }
+
+    #certificateSection,
+    #certificateSection *{
+        visibility:visible !important;
+    }
+
+    #certificateSection{
+        position:absolute;
+        inset:0;
+        display:block !important;
+    }
+
+    .certificate{
+        width:100vw;
+        height:100vh;
+        max-width:none;
+        min-height:100vh;
+        border:13px double #b89443;
+        box-shadow:none;
+    }
+
+    .print-actions{
+        display:none !important;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .header{
+        padding:0 4%;
+    }
+
+    .header-badge{
+        display:none;
+    }
+
+    .container{
+        padding-top:30px;
+    }
+
+    .start-card,
+    .question-card,
+    .result-card,
+    .review-card{
+        padding:22px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .quiz-top{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .question{
+        font-size:19px;
+    }
+
+    .quiz-actions{
+        flex-direction:column-reverse;
+    }
+
+    .action-btn{
+        width:100%;
+    }
+
+    .result h2{
+        font-size:27px;
+    }
+
+    .score{
+        font-size:58px;
+    }
+
+    .certificate{
+        padding:40px 20px;
+    }
+
+    .certificate h1{
+        font-size:32px;
+    }
+
+    .cert-name{
+        font-size:28px;
+        padding:0 15px 10px;
+    }
+
+    .cert-course{
+        font-size:18px;
+    }
+
+    .cert-footer{
+        flex-direction:column;
+        gap:25px;
+        align-items:center;
+    }
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.hidden{
+    display:none !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="brand">
+        <div class="brand-icon">🏛️</div>
+        <span>منصة الاختبارات</span>
+    </div>
+
+    <div class="header-badge">
+        الصف الثاني الثانوي
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-icon">📚</div>
+
+        <h1>
+            اختبار
+            <span class="gradient">بناء الدولة المصرية</span>
+        </h1>
+
+        <p>
+            مادة التاريخ • الصف الثاني الثانوي
+        </p>
+
+    </section>
+
+
+    <!-- START -->
+
+    <section class="glass start-card" id="startScreen">
+
+        <h2 style="font-size:25px;">
+            جاهز تبدأ الاختبار؟
+        </h2>
+
+        <p style="color:var(--muted);margin-top:8px;">
+            اختبر معلوماتك في درس بناء الدولة المصرية
+            واحصل على نتيجتك وشهادتك بعد الانتهاء.
+        </p>
+
+        <div class="info-grid">
+
+            <div class="info">
+                <div class="info-icon">📝</div>
+                <strong>30</strong>
+                <span>سؤال</span>
+            </div>
+
+            <div class="info">
+                <div class="info-icon">🎯</div>
+                <strong>MCQ</strong>
+                <span>اختيار من متعدد</span>
+            </div>
+
+            <div class="info">
+                <div class="info-icon">🏆</div>
+                <strong>60%</strong>
+                <span>درجة النجاح</span>
+            </div>
+
+        </div>
+
+        <label class="label">
+            اسم الطالب
+        </label>
+
+        <input
+            id="studentName"
+            class="name-input"
+            type="text"
+            placeholder="اكتب اسمك بالكامل"
+            autocomplete="off"
+        >
+
+        <button class="btn btn-primary" onclick="startQuiz()">
+            🚀 ابدأ الاختبار الآن
+        </button>
+
+        <div class="note">
+            يتم استخدام الاسم لإنشاء الشهادة فقط.
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="quiz" id="quizScreen">
+
+        <div class="quiz-top">
+
+            <div class="progress-wrap">
+
+                <div class="progress-info">
+
+                    <span id="progressText">
+                        السؤال 1 من 30
+                    </span>
+
+                    <span id="progressPercent">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="timer" id="timer">
+                ⏱️ 30:00
+            </div>
+
+        </div>
+
+
+        <div class="glass question-card">
+
+            <div class="question-label" id="questionLabel">
+                السؤال 01
+            </div>
+
+            <div
+                class="question"
+                id="questionText">
+            </div>
+
+            <div
+                class="options"
+                id="options">
+            </div>
+
+            <div class="quiz-actions">
+
+                <button
+                    class="action-btn"
+                    onclick="previousQuestion()">
+                    → السابق
+                </button>
+
+                <button
+                    class="action-btn next-btn"
+                    id="nextButton"
+                    onclick="nextQuestion()">
+                    التالي ←
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT -->
+
+    <section class="result" id="resultScreen">
+
+        <div class="glass result-card">
+
+            <div class="result-icon">
+                🏆
+            </div>
+
+            <h2 id="resultTitle">
+                نتيجة الاختبار
+            </h2>
+
+            <div class="score" id="scorePercent">
+                0%
+            </div>
+
+            <div class="score-sub" id="scoreText">
+                0 من 30
+            </div>
+
+            <div
+                class="result-message"
+                id="resultMessage">
+            </div>
+
+            <div class="result-actions">
+
+                <button
+                    class="action-btn"
+                    onclick="showReview()">
+                    📋 مراجعة الإجابات
+                </button>
+
+                <button
+                    class="action-btn"
+                    onclick="restartQuiz()">
+                    🔄 إعادة الاختبار
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    style="width:auto;margin:0;"
+                    id="certificateBtn"
+                    onclick="showCertificate()">
+                    🏆 الشهادة
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REVIEW -->
+
+    <section class="review" id="reviewScreen">
+
+        <div class="glass review-card">
+
+            <div class="review-title">
+                📋 مراجعة إجاباتك
+            </div>
+
+            <div id="reviewContainer"></div>
+
+            <button
+                class="btn btn-primary"
+                onclick="backToResult()">
+                العودة إلى النتيجة
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CERTIFICATE -->
+
+    <section
+        class="certificate-section"
+        id="certificateSection">
+
+        <div class="certificate" id="certificate">
+
+            <div class="crown">
+                🏆
+            </div>
+
+            <h1>
+                شهادة اجتياز
+            </h1>
+
+            <div class="cert-subtitle">
+                CERTIFICATE OF ACHIEVEMENT
+            </div>
+
+            <div class="cert-small">
+                تشهد منصة الاختبارات بأن الطالب
+            </div>
+
+            <div
+                class="cert-name"
+                id="certificateName">
+            </div>
+
+            <div class="cert-course">
+                قد اجتاز اختبار مادة التاريخ
+                <br>
+                <strong>
+                    درس بناء الدولة المصرية
+                </strong>
+            </div>
+
+            <div
+                class="cert-score"
+                id="certificateScore">
+            </div>
+
+            <div
+                class="cert-date"
+                id="certificateDate">
+            </div>
+
+            <div class="cert-footer">
+
+                <div class="sign">
+                    إدارة الاختبار
+                    <div class="sign-line"></div>
+                </div>
+
+                <div style="font-size:45px;">
+                    🏛️
+                </div>
+
+                <div class="sign">
+                    مدرس المادة
+                    <div class="sign-line"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="print-actions">
+
+            <button
+                class="btn btn-primary"
+                style="width:auto;"
+                onclick="window.print()">
+                🖨️ طباعة / حفظ PDF
+            </button>
+
+            <button
+                class="action-btn"
+                onclick="backToResultFromCertificate()">
+                العودة
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =========================
+   QUESTIONS
+========================= */
+
+const questions = [
+
+{
+q:"الإطار الذي ينظم حياة الأفراد ويحافظ على الأمن والاستقرار ويضمن ممارسة الحقوق والواجبات هو:",
+options:[
+"الحكومة",
+"الشعب",
+"الدولة",
+"السيادة"
+],
+answer:2
+},
+
+{
+q:"من الأركان الأساسية لقيام الدولة والمسؤول عن إدارة شؤونها داخلياً وخارجياً:",
+options:[
+"السلطة الحاكمة",
+"الشعب",
+"الحيز الجغرافي",
+"السيادة"
+],
+answer:0
+},
+
+{
+q:"لا يمكن لأي دولة أن تقوم أو تؤدي وظائفها بصورة كاملة إلا بـ:",
+options:[
+"توفر أحدث الأسلحة",
+"اجتماع واكتمال كافة أركانها الأربعة",
+"وجود نهر النيل",
+"وجود جيش قوي فقط"
+],
+answer:1
+},
+
+{
+q:"كلمة السر وركيزة مفهوم الشعب في الدولة هي:",
+options:[
+"الموقع الجغرافي",
+"جنسية الدولة",
+"الدستور والقوانين",
+"السيادة الخارجية"
+],
+answer:1
+},
+
+{
+q:"يُعد الشعب هو القوة الحقيقية للدولة لأنه من خلاله يتحقق:",
+options:[
+"بناء الأهرامات والمعابد",
+"الاستقرار والتنمية وحماية الوطن",
+"عقد المعاهدات الدولية",
+"سن القوانين التشريعية"
+],
+answer:1
+},
+
+{
+q:"يتكون الحيز الجغرافي للدولة من أربعة عناصر وهي:",
+options:[
+"اليابس والمياه الإقليمية والمجال الجوي",
+"اليابس والمجال الجوي فقط",
+"نهر النيل والبحر المتوسط والأحمر",
+"الحدود السياسية والسيادة والسلطة"
+],
+answer:0
+},
+
+{
+q:"الفضاء الذي يعلو اليابس والمياه الإقليمية وتمارس الدولة سيادتها عليه يسمى:",
+options:[
+"المياه الإقليمية",
+"المجال الجوي",
+"الحيز البشري",
+"الحدود الطبيعية"
+],
+answer:1
+},
+
+{
+q:"المساحات البحرية التابعة للدولة والتي تمارس عليها سيادتها وتحمي ثرواتها هي:",
+options:[
+"اليابس",
+"المياه الإقليمية",
+"المجال الجوي",
+"الصحاري الشرقية والغربية"
+],
+answer:1
+},
+
+{
+q:"المشاركة السياسية للشعب تظهر من خلال:",
+options:[
+"دفع الضرائب والتزام القانون",
+"انتخاب ممثلي الشعب والمشاركة في الانتخابات",
+"احترام التراث والثقافة",
+"نبذ العنف والتطرف"
+],
+answer:1
+},
+
+{
+q:"الحفاظ على الهوية الوطنية من أدوار الشعب ويمثل في:",
+options:[
+"العمل والإنتاج",
+"احترام التراث والثقافة ودعم الانتماء",
+"المشاركة في الانتخابات",
+"التعاون مع مؤسسات الدولة"
+],
+answer:1
+},
+
+{
+q:"السلطة المختصة بسن القوانين والرقابة على السلطة التنفيذية هي:",
+options:[
+"السلطة القضائية",
+"السلطة التشريعية (البرلمان)",
+"السلطة التنفيذية",
+"القوات المسلحة"
+],
+answer:1
+},
+
+{
+q:"تختص السلطة التنفيذية (الحكومة) بـ:",
+options:[
+"الفصل في المنازعات",
+"تنفيذ القوانين وإدارة شؤون الدولة",
+"إصدار الأحكام القضائية",
+"سن الدستور والقوانين"
+],
+answer:1
+},
+
+{
+q:"المؤسسة المسؤولة عن تحقيق العدالة والفصل في المنازعات وإصدار الأحكام هي:",
+options:[
+"البرلمان",
+"الحكومة",
+"السلطة القضائية (القضاء)",
+"رئيس الجمهورية"
+],
+answer:2
+},
+
+{
+q:"يعني مفهوم السيادة الداخلية:",
+options:[
+"إبرام المعاهدات الدولية",
+"سن القوانين وحفظ الأمن وإدارة شؤون المواطنين",
+"التمثيل في المنظمات الدولية",
+"الاستقلال عن الدول الخارجية"
+],
+answer:1
+},
+
+{
+q:"إبرام المعاهدات والتمثيل في المنظمات الدولية وإقامة العلاقات من مظاهر:",
+options:[
+"السيادة الداخلية",
+"السيادة الخارجية",
+"السلطة التشريعية",
+"المجال الجوي"
+],
+answer:1
+},
+
+{
+q:"العلاقة بين قوة مؤسسات الدولة وممارسة سيادتها هي علاقة:",
+options:[
+"طردية",
+"عكسية",
+"لا توجد بينهما علاقة",
+"تناقضية"
+],
+answer:0
+},
+
+{
+q:"من المقومات الطبيعية التي ساعدت على نشأة الدولة المصرية واستقرارها:",
+options:[
+"نهر النيل، الموقع الجغرافي، الحدود الطبيعية، الموارد",
+"الجيش، الشعب، الحكومة، السيادة",
+"الانتخابات، الدستور، القوانين، الموازنة",
+"الأهرامات، المعابد، الدواوين، البعثات"
+],
+answer:0
+},
+
+{
+q:"تمثلت الحدود الطبيعية لمصر جنوباً في:",
+options:[
+"البحر المتوسط",
+"الصحاري الشرقية والغربية",
+"الشلالات (الجنادل)",
+"البحر الأحمر"
+],
+answer:2
+},
+
+{
+q:"لعبت الحدود الطبيعية دوراً هاماً لمصر عبر التاريخ حيث أدت إلى:",
+options:[
+"فرض العزلة على الشعب",
+"حماية مصر من الأخطار والغزوات وتوفير الأمن",
+"منع التواصل مع دول العالم",
+"إضعاف سلطة الحكومة المركزية"
+],
+answer:1
+},
+
+{
+q:"يقع موقع مصر الجغرافي المتميز في قلب العالم القديم بين ثلاث قارات هي:",
+options:[
+"آسيا وأوروبا وأمريكا",
+"آسيا وأفريقيا وأوروبا",
+"أفريقيا وأستراليا وآسيا",
+"أمريكا الشمالية وأوروبا وآسيا"
+],
+answer:1
+},
+
+{
+q:"يُعد نهر النيل أساس قيام الدولة المصرية القديمة لأنه ساعد على:",
+options:[
+"وفرة المياه والزراعة وقيام حكومة مركزية لتنظيم الري",
+"بناء الأسطول البحري وتنشيط التجارة الإقليمية",
+"الدفاع عن الحدود البحرية شمالاً",
+"تأسيس القضاء والنيابة العامة"
+],
+answer:0
+},
+
+{
+q:"ساهمت الموارد الطبيعية في مصر القديمة في:",
+options:[
+"استخراج المعادن وتنمية الزراعة والصناعة ودعم الاقتصاد",
+"خروج الجيش للقتال خارج الحدود",
+"سن القوانين التشريعية للبلاد",
+"إنهاء النظام الملكي"
+],
+answer:0
+},
+
+{
+q:"توحد القطران في مصر القديمة على يد الملك:",
+options:[
+"أحمس",
+"مينا (نعرمر)",
+"رمسيس الثاني",
+"تحتمس الثالث"
+],
+answer:1
+},
+
+{
+q:"قامت أول حكومة مركزية قوية في مصر القديمة بهدف:",
+options:[
+"تنظيم مياه النيل وإدارة شؤون البلاد وتحقيق الاستقرار",
+"طرد الهكسوس والفرس",
+"إنشاء أسطول بحري في البحر المتوسط",
+"استيراد المعادن من الخارج"
+],
+answer:0
+},
+
+{
+q:"بدأ العصر الإسلامي في مصر بدخول المسلمين سنة:",
+options:[
+"525 ق.م",
+"641 م",
+"1952 م",
+"1805 م"
+],
+answer:1
+},
+
+{
+q:"تعرضت مصر لعدة احتلالات أجنبية عبر تاريخها القديم مثل:",
+options:[
+"الهكسوس، الأشوريين، الفرس، اليونانيين، الرومان",
+"المماليك، الأيوبيين، الفاطميين",
+"الإنجليز والفرنسيين فقط",
+"العباسيين والأمويين"
+],
+answer:0
+},
+
+{
+q:"يُعتبر مؤسس الدولة المصرية الحديثة والذي وضع أسس الدولة القوية هو:",
+options:[
+"الملك فاروق",
+"محمد علي",
+"جمال عبد الناصر",
+"صلاح الدين الأيوبي"
+],
+answer:1
+},
+
+{
+q:"قامت ثورة 23 يوليو 1952 بإنجاز سياسي وتاريخي كبير يكمن في:",
+options:[
+"توحيد القطرين",
+"إنهاء النظام الملكي وإعلان الجمهورية",
+"الفتح الإسلامي لمصر",
+"بناء الأهرامات"
+],
+answer:1
+},
+
+{
+q:"من أهم إنجازات محمد علي العسكرية لبناء دولة حديثة:",
+options:[
+"بناء الأهرامات والمعابد",
+"إنشاء جيش حديث وأسطول بحري",
+"سن دستور 1923",
+"تنظيم الانتخابات النيابية"
+],
+answer:1
+},
+
+{
+q:"تهدف الدولة المصرية المعاصرة حالياً إلى:",
+options:[
+"ترسيخ المؤسسات الدستورية، تحقيق التنمية المستدامة، والحفاظ على الأمن القومي",
+"بناء الدواوين والكتاتيب",
+"التوسع العسكري الخارجي",
+"إلغاء القوانين التشريعية"
+],
+answer:0
+}
+
+];
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentQuestion = 0;
+
+let userAnswers =
+new Array(questions.length).fill(null);
+
+let studentName = "";
+
+let finalScore = 0;
+
+let timerSeconds = 30 * 60;
+
+let timerInterval;
+
+
+/* =========================
+   START
+========================= */
+
+function startQuiz(){
+
+    const input =
+    document.getElementById("studentName");
+
+    studentName =
+    input.value.trim();
+
+    if(!studentName){
+
+        alert("من فضلك اكتب اسم الطالب أولاً.");
+
+        input.focus();
+
+        return;
+    }
+
+    document.getElementById("startScreen")
+    .style.display="none";
+
+    document.getElementById("quizScreen")
+    .style.display="block";
+
+    currentQuestion=0;
+
+    userAnswers =
+    new Array(questions.length).fill(null);
+
+    startTimer();
+
+    showQuestion();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showQuestion(){
+
+    const q =
+    questions[currentQuestion];
+
+    document.getElementById("questionText")
+    .innerText=q.q;
+
+    document.getElementById("questionLabel")
+    .innerText=
+    "السؤال "+
+    String(currentQuestion+1).padStart(2,"0");
+
+    document.getElementById("progressText")
+    .innerText=
+    "السؤال "+
+    (currentQuestion+1)+
+    " من "+
+    questions.length;
+
+    const percent =
+    Math.round(
+        ((currentQuestion+1) /
+        questions.length)*100
+    );
+
+    document.getElementById("progressPercent")
+    .innerText=percent+"%";
+
+    document.getElementById("progressBar")
+    .style.width=percent+"%";
+
+
+    const options =
+    document.getElementById("options");
+
+    options.innerHTML="";
+
+
+    const letters=[
+        "أ",
+        "ب",
+        "ج",
+        "د"
+    ];
+
+
+    q.options.forEach(
+        (option,index)=>{
+
+            const div =
+            document.createElement("div");
+
+            div.className="option";
+
+            if(
+                userAnswers[currentQuestion]
+                ===index
+            ){
+
+                div.classList.add("selected");
+
+            }
+
+            div.innerHTML=`
+                <div class="option-letter">
+                    ${letters[index]}
+                </div>
+
+                <div>
+                    ${option}
+                </div>
+            `;
+
+            div.onclick=()=>{
+                selectOption(index);
+            };
+
+            options.appendChild(div);
+
+        }
+    );
+
+
+    const next =
+    document.getElementById("nextButton");
+
+    if(
+        currentQuestion ===
+        questions.length-1
+    ){
+
+        next.innerText=
+        "إنهاء الاختبار ✓";
+
+    }else{
+
+        next.innerText=
+        "التالي ←";
+
+    }
+
+}
+
+
+/* =========================
+   SELECT
+========================= */
+
+function selectOption(index){
+
+    userAnswers[currentQuestion]=index;
+
+    showQuestion();
+
+}
+
+
+/* =========================
+   NEXT
+========================= */
+
+function nextQuestion(){
+
+    if(
+        userAnswers[currentQuestion]
+        ===null
+    ){
+
+        alert(
+            "اختر إجابة قبل الانتقال للسؤال التالي."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        currentQuestion <
+        questions.length-1
+    ){
+
+        currentQuestion++;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* =========================
+   PREVIOUS
+========================= */
+
+function previousQuestion(){
+
+    if(currentQuestion>0){
+
+        currentQuestion--;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+function finishQuiz(){
+
+    const unanswered =
+    userAnswers.filter(
+        answer=>answer===null
+    ).length;
+
+
+    if(unanswered>0){
+
+        alert(
+            "يوجد "+
+            unanswered+
+            " سؤال بدون إجابة."
+        );
+
+        return;
+
+    }
+
+
+    clearInterval(timerInterval);
+
+
+    let score=0;
+
+
+    questions.forEach(
+        (question,index)=>{
+
+            if(
+                userAnswers[index]
+                ===question.answer
+            ){
+
+                score++;
+
+            }
+
+        }
+    );
+
+
+    finalScore=score;
+
+
+    const percent =
+    Math.round(
+        (score/questions.length)*100
+    );
+
+
+    document.getElementById("quizScreen")
+    .style.display="none";
+
+    document.getElementById("resultScreen")
+    .style.display="block";
+
+
+    document.getElementById("scorePercent")
+    .innerText=
+    percent+"%";
+
+
+    document.getElementById("scoreText")
+    .innerText=
+    score+
+    " من "+
+    questions.length;
+
+
+    let title;
+    let message;
+
+
+    if(percent===100){
+
+        title="درجة كاملة! 🏆";
+
+        message=
+        "ممتاز يا "+
+        studentName+
+        "، أجبت عن جميع الأسئلة بشكل صحيح.";
+
+    }
+
+    else if(percent>=85){
+
+        title="ممتاز جداً! 🌟";
+
+        message=
+        "أداء مميز يا "+
+        studentName+
+        "، استمر على هذا المستوى.";
+
+    }
+
+    else if(percent>=70){
+
+        title="أحسنت! 👏";
+
+        message=
+        "نتيجة جيدة جداً. راجع النقاط التي أخطأت فيها.";
+
+    }
+
+    else if(percent>=60){
+
+        title="مبروك! ✅";
+
+        message=
+        "لقد اجتزت الاختبار بنجاح.";
+
+    }
+
+    else{
+
+        title="تحتاج إلى مراجعة 📚";
+
+        message=
+        "راجع درس بناء الدولة المصرية وحاول مرة أخرى.";
+
+    }
+
+
+    document.getElementById("resultTitle")
+    .innerText=title;
+
+    document.getElementById("resultMessage")
+    .innerText=message;
+
+
+    const certBtn =
+    document.getElementById(
+        "certificateBtn"
+    );
+
+
+    if(percent>=60){
+
+        certBtn.style.display=
+        "inline-block";
+
+    }else{
+
+        certBtn.style.display=
+        "none";
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+function startTimer(){
+
+    timerSeconds=30*60;
+
+    updateTimer();
+
+
+    clearInterval(timerInterval);
+
+
+    timerInterval =
+    setInterval(()=>{
+
+        timerSeconds--;
+
+        updateTimer();
+
+
+        if(timerSeconds<=0){
+
+            clearInterval(timerInterval);
+
+            alert(
+                "انتهى وقت الاختبار."
+            );
+
+            finishQuiz();
+
+        }
+
+    },1000);
+
+}
+
+
+function updateTimer(){
+
+    const minutes =
+    Math.floor(
+        timerSeconds/60
+    );
+
+    const seconds =
+    timerSeconds%60;
+
+
+    document.getElementById("timer")
+    .innerText=
+    "⏱️ "+
+    String(minutes).padStart(2,"0")+
+    ":"+
+    String(seconds).padStart(2,"0");
+
+}
+
+
+/* =========================
+   REVIEW
+========================= */
+
+function showReview(){
+
+    document.getElementById("resultScreen")
+    .style.display="none";
+
+    document.getElementById("reviewScreen")
+    .style.display="block";
+
+
+    const container =
+    document.getElementById(
+        "reviewContainer"
+    );
+
+    container.innerHTML="";
+
+
+    const letters=[
+        "أ",
+        "ب",
+        "ج",
+        "د"
+    ];
+
+
+    questions.forEach(
+        (q,index)=>{
+
+            const correct =
+            userAnswers[index]===q.answer;
+
+
+            const item =
+            document.createElement("div");
+
+
+            item.className=
+            "review-item "+
+            (
+                correct
+                ?"correct"
+                :"wrong"
+            );
+
+
+            let html=`
+                <div class="review-question">
+                    ${index+1}. ${q.q}
+                </div>
+            `;
+
+
+            if(correct){
+
+                html+=`
+                    <div class="review-answer right">
+                        ✓ إجابتك الصحيحة:
+                        ${letters[q.answer]})
+                        ${q.options[q.answer]}
+                    </div>
+                `;
+
+            }else{
+
+                html+=`
+                    <div class="review-answer wrong-text">
+                        ✕ إجابتك:
+                        ${letters[userAnswers[index]]})
+                        ${q.options[userAnswers[index]]}
+                    </div>
+
+                    <div class="review-answer right">
+                        ✓ الإجابة الصحيحة:
+                        ${letters[q.answer]})
+                        ${q.options[q.answer]}
+                    </div>
+                `;
+
+            }
+
+
+            item.innerHTML=html;
+
+            container.appendChild(item);
+
+        }
+    );
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+function backToResult(){
+
+    document.getElementById("reviewScreen")
+    .style.display="none";
+
+    document.getElementById("resultScreen")
+    .style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   CERTIFICATE
+========================= */
+
+function showCertificate(){
+
+    const percent =
+    Math.round(
+        (finalScore/questions.length)*100
+    );
+
+
+    if(percent<60){
+
+        return;
+
+    }
+
+
+    document.getElementById("resultScreen")
+    .style.display="none";
+
+    document.getElementById("certificateSection")
+    .style.display="block";
+
+
+    document.getElementById("certificateName")
+    .innerText=studentName;
+
+
+    document.getElementById("certificateScore")
+    .innerText=
+    "النتيجة: "+
+    finalScore+
+    " / "+
+    questions.length+
+    " — "+
+    percent+"%";
+
+
+    const date =
+    new Date().toLocaleDateString(
+        "ar-EG",
+        {
+            year:"numeric",
+            month:"long",
+            day:"numeric"
+        }
+    );
+
+
+    document.getElementById("certificateDate")
+    .innerText=
+    "تاريخ الإصدار: "+date;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   BACK CERTIFICATE
+========================= */
+
+function backToResultFromCertificate(){
+
+    document.getElementById(
+        "certificateSection"
+    ).style.display="none";
+
+    document.getElementById(
+        "resultScreen"
+    ).style.display="block";
+
+}
+
+
+/* =========================
+   RESTART
+========================= */
+
+function restartQuiz(){
+
+    clearInterval(timerInterval);
+
+    currentQuestion=0;
+
+    finalScore=0;
+
+    userAnswers =
+    new Array(questions.length).fill(null);
+
+
+    document.getElementById("resultScreen")
+    .style.display="none";
+
+    document.getElementById("reviewScreen")
+    .style.display="none";
+
+    document.getElementById("certificateSection")
+    .style.display="none";
+
+    document.getElementById("quizScreen")
+    .style.display="block";
+
+
+    startTimer();
+
+    showQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
